@@ -28,12 +28,11 @@ jobs:
     - name: Build with Gradle
       run: ./gradlew build
 
-    - name: Build and Push Docker Image
-      uses: redhat-actions/push-to-registry@v2
+    - name: Build and push Docker image
+      uses: docker/build-push-action@v4
       with:
-        image: jhimmiec137/sample-devops-project
-        tags: latest
-        registry: docker.io
+        push: true
+        tags: jhimmiec137/sample-devops-project:latest
         username: ${{ secrets.DOCKER_USERNAME }}
         password: ${{ secrets.DOCKER_PASSWORD }}
          
